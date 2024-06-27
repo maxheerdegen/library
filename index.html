@@ -9,7 +9,31 @@
 </head>
 <body>
     <div class="container">
-
     </div>
+    <dialog class="newBookDialog">
+        <form class="newBookForm">
+            <div>
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="author">Book Author:</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div>
+                <label for="pages">Number of Pages:</label>
+                <input type="text" id="pages" name="numberOfPages">
+            </div>
+            <div>
+                <label for="read">Read:</label>
+                <input type="checkbox" id="read" name="read" value="no">
+            </div>
+            <div>
+                <button class="cancel" formmethod="dialog">Cancel</button>
+                <button class="confirm">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+    <button class="showDialog">Addd new Book</button>
 </body>
 </html>
