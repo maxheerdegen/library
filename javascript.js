@@ -17,9 +17,16 @@ function displayBooksOnPage(library){
     for ( const [index, book] of library.entries()){
         console.log(book);
         const content = document.createElement("div");
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "delete";
         content.dataset.libraryIndex = index;
         content.textContent = `${book.title} ${book.author} ${book.numberOfPages} ${book.read}`;
+        content.appendChild(deleteButton);
         container.appendChild(content);
+
+        deleteButton.addEventListener("click", () => {
+            container.removeChild(content);
+        })
     }
 }
 
