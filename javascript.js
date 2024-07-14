@@ -11,9 +11,13 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBooksOnPage(library){
-    for (book of library){
+    while (container.lastChild){
+        container.removeChild(container.lastChild);
+    }
+    for ( const [index, book] of library.entries()){
         console.log(book);
         const content = document.createElement("div");
+        content.dataset.libraryIndex = index;
         content.textContent = `${book.title} ${book.author} ${book.numberOfPages} ${book.read}`;
         container.appendChild(content);
     }
@@ -25,6 +29,7 @@ const showButton = document.querySelector(".showDialog");
 const newBookDialog = document.querySelector(".newBookDialog");
 const newBookForm = document.querySelector(".newBookForm");
 const confirmButton = document.querySelector(".confirm");
+const cancelButton = document.querySelector(".cancel");
 
 
 const newBookTitle = document.querySelector("#title");
@@ -43,8 +48,13 @@ confirmButton.addEventListener("click", (event)=>{
     }
     addBookToLibrary(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookRead.value);
     console.table(library);
+    displayBooksOnPage(library);
     newBookForm.reset();
     newBookDialog.close();
+})
+
+cancelButton.addEventListener("click", (event) =>{
+    newBookForm.reset();
 })
 
 
