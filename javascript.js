@@ -26,6 +26,7 @@ function displayBooksOnPage(library){
 
         deleteButton.addEventListener("click", () => {
             container.removeChild(content);
+            library.splice(content.dataset.libraryIndex, 1);
         })
     }
 }
