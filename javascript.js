@@ -5,6 +5,16 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.changeRead = function () {
+    if (this.read === "no") {
+        this.read = "yes";
+    }
+
+    else {
+        this.read = "no";
+    }
+}
+
 function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
     library.push(book);
@@ -66,8 +76,8 @@ cancelButton.addEventListener("click", (event) =>{
 })
 
 
-addBookToLibrary("hobbit", "Tolkien", 500, true);
-addBookToLibrary("potter", "rowling", 500, true);
-addBookToLibrary("xxx", "yyy", 500, true);
+addBookToLibrary("hobbit", "Tolkien", 500, "yes");
+addBookToLibrary("potter", "rowling", 500, "yes");
+addBookToLibrary("xxx", "yyy", 500, "yes");
 
 displayBooksOnPage(library);
