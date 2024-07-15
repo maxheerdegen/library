@@ -28,15 +28,23 @@ function displayBooksOnPage(library){
         console.log(book);
         const content = document.createElement("div");
         const deleteButton = document.createElement("button");
+        const changeReadButton = document.createElement("button");
         deleteButton.textContent = "delete";
+        changeReadButton.textContent = "read";
         content.dataset.libraryIndex = index;
         content.textContent = `${book.title} ${book.author} ${book.numberOfPages} ${book.read}`;
         content.appendChild(deleteButton);
+        content.appendChild(changeReadButton);
         container.appendChild(content);
 
         deleteButton.addEventListener("click", () => {
             container.removeChild(content);
             library.splice(content.dataset.libraryIndex, 1);
+        })
+
+        changeReadButton.addEventListener("click", () => {
+            library[content.dataset.libraryIndex].changeRead();
+            content.childNodes[0].textContent = `${book.title} ${book.author} ${book.numberOfPages} ${book.read}`;
         })
     }
 }
